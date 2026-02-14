@@ -17,12 +17,15 @@
 - **🛡️ Admin Dashboard**:
   - Built-in Django Admin to manage users and view all application data efficiently.
 
+- **🎨 Modern UI**:
+  - Clean, responsive, and user-friendly interface styled with custom CSS for better user experience.
+
 ## 🛠️ Tech Stack
 
 - **Backend**: Django (Python)
 - **Database**: SQLite (Default)
 - **Authentication**: `social-auth-app-django` (Google OAuth2)
-- **Frontend**: HTML5, CSS (In progress)
+- **Frontend**: HTML5, CSS (Custom Styles)
 
 ## 🚀 Getting Started
 
