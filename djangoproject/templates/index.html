@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerQuest - Dashboard</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="container" style="text-align: center;">
+        <h1>Welcome to CareerQuest 🚀</h1>
+        <p>Your personal job application tracking assistant.</p>
+
+        <div style="margin-top: 30px;">
+            <a href="{% url 'entry' %}"
+                style="display: inline-block; background-color: #4CAF50; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; margin: 10px; font-weight: bold;">
+                Add New Application
+            </a>
+
+            <a href="{% url 'view' %}"
+                style="display: inline-block; background-color: #008CBA; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; margin: 10px; font-weight: bold;">
+                View Applications
+            </a>
+
+            <a href="{% url 'admin:index' %}"
+                style="display: inline-block; background-color: #333; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; margin: 10px; font-weight: bold;">
+                Admin Panel
+            </a>
+        </div>
+
+        <div style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px;">
+            <p>Logged in as: <strong>{{ request.user.username }}</strong></p>
+            <a href="{% url 'logout' %}" style="color: #666; font-size: 0.9em;">Logout</a>
+        </div>
+    </div>
+</body>
+
+</html>
