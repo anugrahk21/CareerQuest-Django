@@ -24,7 +24,6 @@ def entry(request):
 
     return render(request,'entry.html')
 
-@login_required(login_url='login') # User can't access home page if not logged in
 def home(request):
     return render(request,'index.html')
 
@@ -58,4 +57,4 @@ def logout_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
     logout(request)
-    return redirect('login')
+    return redirect('home')
