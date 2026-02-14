@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="post" onsubmit="alert('Data Submitted Successfully!')">
+        {% csrf_token %} <!-- Security token for POST requests : this is used to prevent cross site request forgery -->
+        <label for="id">ID:</label>
+        <input type="text" name="id" id="id">
+        <br>
+        <label for="company">Company:</label>
+        <input type="text" name="company" id="company">
+        <br>
+        <label for="role">Role:</label>
+        <input type="text" name="role" id="role">
+        <br>
+        <label for="type">Type:</label>
+        <select name="type" id="type">
+            <option value="TECH">TECH</option>
+            <option value="HR">HR</option>
+            <option value="FINANCE">FINANCE</option>
+            <option value="SALES">SALES</option>
+            <option value="MARKETING">MARKETING</option>
+            <option value="OTHER">OTHER</option>
+        </select>
+        <br>
+        <label for="package">Package:</label>
+        <select name="package" id="package">
+            <option value=">3LPA">>3LPA</option>
+            <option value="3-5LPA">3-5LPA</option>
+            <option value="5-8LPA">5-8LPA</option>
+            <option value="8-12LPA">8-12LPA</option>
+            <option value="12-15LPA">12-15LPA</option>
+            <option value=">15LPA">>15LPA</option>
+        </select>
+        <br>
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="APPLIED">Applied</option>
+            <option value="OA">Online Assessment</option>
+            <option value="HR">HR</option>
+            <option value="TECHNICAL">Technical</option>
+            <option value="FINAL">Final</option>
+            <option value="ACCEPTED">Accepted</option>
+            <option value="REJECTED">Rejected</option>
+            <option value="PLACED">Placed</option>
+        </select>
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date">
+        <br>
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
