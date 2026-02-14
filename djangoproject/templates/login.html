@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,21 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body>
-    <form action="" method="post">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password">
-        <br>
-        <input type="submit" value="Login">
-    </form>
+    <div class="container">
+        <h1>Login</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" placeholder="Enter username">
 
-    <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Enter password">
+
+            <input type="submit" value="Login">
+        </form>
+
+        <a href="{% url 'social:begin' 'google-oauth2' %}" class="google-btn">Login with Google</a>
+    </div>
 </body>
 
 </html>

@@ -1,37 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>View Applications</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body>
-    <h1>View Applications</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Company</th>
-            <th>Role</th>
-            <th>Type</th>
-            <th>Package</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Notes</th>
-        </tr>
-        {% for i in data %} <!-- Loop through all CareerApp objects -->
-        <!-- 'i' is like the object of CareerApp model -->
-        <tr>
-            <td>{{ i.id }}</td>
-            <td>{{ i.company }}</td>
-            <td>{{ i.role }}</td>
-            <td>{{ i.type }}</td>
-            <td>{{ i.package }}</td>
-            <td>{{ i.status }}</td>
-            <td>{{ i.date }}</td>
-            <td>{{ i.notes }}</td>
-        </tr>
-        {% endfor %} <!-- End of loop -->
-    </table>
+    <div class="container view-container">
+        <h1>View Applications</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Type</th>
+                <th>Package</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Notes</th>
+            </tr>
+            {% for i in data %} <!-- Loop through all CareerApp objects -->
+            <!-- 'i' is like the object of CareerApp model -->
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.company }}</td>
+                <td>{{ i.role }}</td>
+                <td>{{ i.type }}</td>
+                <td>{{ i.package }}</td>
+                <td>{{ i.status }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.notes }}</td>
+            </tr>
+            {% endfor %} <!-- End of loop -->
+        </table>
+
+        <a href="{% url 'entry' %}">Add New Entry</a>
+        <a href="{% url 'logout' %}" style="color: #666;">Logout</a>
+    </div>
 </body>
 
 </html>
