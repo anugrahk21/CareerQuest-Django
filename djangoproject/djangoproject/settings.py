@@ -139,7 +139,7 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'entry'
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = 'home'
 
 import os
 from dotenv import load_dotenv
