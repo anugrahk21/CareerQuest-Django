@@ -29,7 +29,7 @@ def home(request):
 
 @login_required(login_url='login') # User can't access view page if not logged in
 def view(request):
-    data=CareerApp.objects.all()
+    data=CareerApp.objects.all() # Fetch all entries from the database
     return render(request,'view.html',{'data':data})
 
 def login_view(request):
@@ -58,3 +58,33 @@ def logout_view(request):
         return redirect('login')
     logout(request)
     return redirect('home')
+
+@login_required(login_url='login')
+# views.update(request=<HttpRequest>, id='201')
+# This is automatic! Django knows to pass id='201' because:
+# The URL pattern has <str:id> (the variable name must match)
+def update(request, id):
+    data = CareerApp.objects.get(id=id) # Get the existing data from the database using the id passed in the URL. We will show this data in the update form as default values. User can change them and click on "Update" button to save the changes.
+    if request.method == 'POST': # We go inside this block when user changes the data and clicks on "Update" button.
+        #Until then, we are in GET method and we show the update form with existing data.
+        # data.id = request.POST.get('id') # ID should not be updated as it is the primary key
+        data.company = request.POST.get('company')
+        data.role = request.POST.get('role')
+        data.type = request.POST.get('type')
+        data.package = request.POST.get('package')
+        data.status = request.POST.get('status')
+        data.date = request.POST.get('date')
+        data.notes = request.POST.get('notes')
+        data.save()
+        return redirect('view')
+    # If we are in GET method, we show the update form with existing data.
+    return render(request, 'update.html', {'data': data}) # We pass the existing data to the update.html page so that we can show it in the form fields as default values. User can change them and click on "Update" button to save the changes.
+
+@login_required(login_url='login')
+# views.delete(request=<HttpRequest>, id='201')
+# This is automatic! Django knows to pass id='201' because:
+# The URL pattern has <str:id> (the variable name must match)
+def delete(request, id):
+    data = CareerApp.objects.get(id=id)
+    data.delete() # Delete the entry from the database
+    return redirect('view')
