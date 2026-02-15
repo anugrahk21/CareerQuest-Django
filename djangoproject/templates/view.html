@@ -20,6 +20,7 @@
                 <th>Status</th>
                 <th>Date</th>
                 <th>Notes</th>
+                <th>Actions</th>
             </tr>
             {% for i in data %} <!-- Loop through all CareerApp objects -->
             <!-- 'i' is like the object of CareerApp model -->
@@ -32,6 +33,17 @@
                 <td>{{ i.status }}</td>
                 <td>{{ i.date }}</td>
                 <td>{{ i.notes }}</td>
+                <td>
+                    <!-- { % url 'update' i.id % } ->  1. find 'update' in urls.py ( { % url % } does url pattern matching/lookup) -->
+                    <!-- 2. sees pattern 'update/<int:id>' with placeholder 'id' -->
+                    <!-- 3. matches 'i.id' with 'id' in the pattern (if 'i.id'=1, 'id' will be 1) -->
+                    <!-- 4. generates URL like 'update/1' ( /update/<str:id>/ -> /update/1/ ) -->
+                    <a href="{% url 'update' i.id %}"
+                        style="color: blue; text-decoration: none; font-weight: bold; margin-right: 15px;">Edit</a>
+                    <a href="{% url 'delete' i.id %}"
+                        onclick="return confirm('Are you sure you want to delete this entry?');"
+                        style="color: red; text-decoration: none; font-weight: bold;">Delete</a>
+                </td>
             </tr>
             {% endfor %} <!-- End of loop -->
         </table>
