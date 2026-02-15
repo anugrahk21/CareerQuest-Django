@@ -19,10 +19,10 @@
             <input type="text" name="id" id="id" value="{{ data.id }}" readonly style="background-color: #eee;">
 
             <label for="company">Company:</label>
-            <input type="text" name="company" id="company" value="{{ data.company }}">
+            <input type="text" name="company" id="company" value="{{ data.company }}" required>
 
             <label for="role">Role:</label>
-            <input type="text" name="role" id="role" value="{{ data.role }}">
+            <input type="text" name="role" id="role" value="{{ data.role }}" required>
 
             <label for="type">Type:</label>
             <select name="type" id="type">
@@ -57,7 +57,7 @@
             </select>
 
             <label for="date">Date:</label>
-            <input type="date" name="date" id="date" value="{{ data.date }}">
+            <input type="date" name="date" id="date" value="{{ data.date }}" required>
 
             <label for="notes">Notes:</label>
             <textarea name="notes" id="notes" cols="30" rows="5">{{ data.notes }}</textarea>
