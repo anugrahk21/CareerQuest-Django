@@ -27,7 +27,7 @@ def entry(request):
 def home(request):
     return render(request,'index.html')
 
-@login_required(login_url='login') # User can't access view page if not logged in
+#@login_required(login_url='login') # User can't access view page if not logged in
 def view(request):
     data=CareerApp.objects.all() # Fetch all entries from the database
     return render(request,'view.html',{'data':data})
@@ -36,18 +36,18 @@ def login_view(request):
     # If user is already logged in, show them the entry page (or force logout)
     # User can't login if already logged in
     if request.user.is_authenticated:
-        return redirect('entry')
+        return redirect('home')
     if request.method=='POST':
         username=request.POST.get('username')
         password=request.POST.get('password')
         # 1. Check if user exists in the database and password is correct.
-        user=authenticate(request,username=username,password=password)
-        if user is not None:
+        user=authenticate(request,username=username,password=password) # 'None' if user doesn't exist or password is incorrect and 'User' object if user exists and password is correct
+        if user is not None: 
             # 2. Create a session for this user.
             # This sets a 'sessionid' cookie in the browser.
             # If this user is a superuser (is_staff=True), this cookie ALSO grants access to /admin/.
             login(request,user)
-            return redirect('entry')
+            return redirect('home')
         else:
             return HttpResponse("Invalid credentials")
     return render(request,'login.html')
