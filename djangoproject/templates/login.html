@@ -12,6 +12,8 @@
 <body>
     <div class="container">
         <h1>Login</h1>
+        <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 20px;">(Credential must be in the
+            database)</p>
         <form action="" method="post">
             {% csrf_token %}
             <label for="username">Username:</label>
@@ -23,7 +25,9 @@
             <input type="submit" value="Login">
         </form>
 
-        <a href="{% url 'social:begin' 'google-oauth2' %}" class="google-btn">Login with Google</a>
+        <p style="text-align: center; color: #666; font-size: 14px; margin-top: 20px;">Don't have an account? No
+            problem!</p>
+        <a href="{% url 'social:begin' 'google-oauth2' %}" class="google-btn">Sign Up / Login with Google</a>
     </div>
 </body>
 
