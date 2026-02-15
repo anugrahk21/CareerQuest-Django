@@ -25,6 +25,9 @@ urlpatterns = [
     path('view/', views.view, name='view'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
+    # <str:id> -> is a capture group, it will capture the id from the url and pass it to the update function
+    path('update/<str:id>/', views.update, name='update'), # 'update/id/' -> url pattern for updation
+    path('delete/<str:id>/', views.delete, name='delete'), # 'delete/id/' -> url pattern for deletion
     path('social-auth/', include('social_django.urls', namespace='social'))
     #or path('logout/',LogoutView.as_view(next_page='login'),name='logout')
 ]

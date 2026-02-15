@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Entry</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edit Application</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <label for="id">ID: (Read Only)</label>
+            <input type="text" name="id" id="id" value="{{ data.id }}" readonly style="background-color: #eee;">
+
+            <label for="company">Company:</label>
+            <input type="text" name="company" id="company" value="{{ data.company }}">
+
+            <label for="role">Role:</label>
+            <input type="text" name="role" id="role" value="{{ data.role }}">
+
+            <label for="type">Type:</label>
+            <select name="type" id="type">
+                <option value="TECH" {% if data.type == "TECH" %}selected{% endif %}>TECH</option>
+                <option value="HR" {% if data.type == "HR" %}selected{% endif %}>HR</option>
+                <option value="FINANCE" {% if data.type == "FINANCE" %}selected{% endif %}>FINANCE</option>
+                <option value="SALES" {% if data.type == "SALES" %}selected{% endif %}>SALES</option>
+                <option value="MARKETING" {% if data.type == "MARKETING" %}selected{% endif %}>MARKETING</option>
+                <option value="OTHER" {% if data.type == "OTHER" %}selected{% endif %}>OTHER</option>
+            </select>
+
+            <label for="package">Package:</label>
+            <select name="package" id="package">
+                <option value=">3LPA" {% if data.package == ">3LPA" %}selected{% endif %}>>3LPA</option>
+                <option value="3-5LPA" {% if data.package == "3-5LPA" %}selected{% endif %}>3-5LPA</option>
+                <option value="5-8LPA" {% if data.package == "5-8LPA" %}selected{% endif %}>5-8LPA</option>
+                <option value="8-12LPA" {% if data.package == "8-12LPA" %}selected{% endif %}>8-12LPA</option>
+                <option value="12-15LPA" {% if data.package == "12-15LPA" %}selected{% endif %}>12-15LPA</option>
+                <option value=">15LPA" {% if data.package == ">15LPA" %}selected{% endif %}>>15LPA</option>
+            </select>
+
+            <label for="status">Status:</label>
+            <select name="status" id="status">
+                <option value="APPLIED" {% if data.status == "APPLIED" %}selected{% endif %}>Applied</option>
+                <option value="OA" {% if data.status == "OA" %}selected{% endif %}>Online Assessment</option>
+                <option value="HR" {% if data.status == "HR" %}selected{% endif %}>HR</option>
+                <option value="TECHNICAL" {% if data.status == "TECHNICAL" %}selected{% endif %}>Technical</option>
+                <option value="FINAL" {% if data.status == "FINAL" %}selected{% endif %}>Final</option>
+                <option value="ACCEPTED" {% if data.status == "ACCEPTED" %}selected{% endif %}>Accepted</option>
+                <option value="REJECTED" {% if data.status == "REJECTED" %}selected{% endif %}>Rejected</option>
+                <option value="PLACED" {% if data.status == "PLACED" %}selected{% endif %}>Placed</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date" value="{{ data.date }}">
+
+            <label for="notes">Notes:</label>
+            <textarea name="notes" id="notes" cols="30" rows="5">{{ data.notes }}</textarea>
+
+            <input type="submit" value="Save Changes">
+        </form>
+        <a href="{% url 'view' %}" style="color: #666; margin-top: 20px;">Cancel (Back to List)</a>
+    </div>
+</body>
+
+</html>
