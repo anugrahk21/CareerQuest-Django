@@ -15,14 +15,15 @@
         <p>Your personal job application tracking assistant.</p>
 
         <div style="margin-top: 30px;">
-            <a href="{% url 'entry' %}"
-                style="display: inline-block; background-color: #4CAF50; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; margin: 10px; font-weight: bold;">
-                Add New Application
-            </a>
 
             <a href="{% url 'view' %}"
                 style="display: inline-block; background-color: #008CBA; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; margin: 10px; font-weight: bold;">
                 View Applications
+            </a>
+
+            <a href="{% url 'entry' %}"
+                style="display: inline-block; background-color: #4CAF50; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; margin: 10px; font-weight: bold;">
+                Add New Application
             </a>
 
             <a href="{% url 'admin:index' %}"
